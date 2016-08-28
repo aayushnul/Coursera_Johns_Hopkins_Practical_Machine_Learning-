@@ -1,0 +1,769 @@
+
+% Default to the notebook output style
+
+    
+
+
+% Inherit from the specified cell style.
+
+
+
+
+    
+\documentclass{article}
+
+    
+    
+    \usepackage{graphicx} % Used to insert images
+    \usepackage{adjustbox} % Used to constrain images to a maximum size 
+    \usepackage{color} % Allow colors to be defined
+    \usepackage{enumerate} % Needed for markdown enumerations to work
+    \usepackage{geometry} % Used to adjust the document margins
+    \usepackage{amsmath} % Equations
+    \usepackage{amssymb} % Equations
+    \usepackage[mathletters]{ucs} % Extended unicode (utf-8) support
+    \usepackage[utf8x]{inputenc} % Allow utf-8 characters in the tex document
+    \usepackage{fancyvrb} % verbatim replacement that allows latex
+    \usepackage{grffile} % extends the file name processing of package graphics 
+                         % to support a larger range 
+    % The hyperref package gives us a pdf with properly built
+    % internal navigation ('pdf bookmarks' for the table of contents,
+    % internal cross-reference links, web links for URLs, etc.)
+    \usepackage{hyperref}
+    \usepackage{longtable} % longtable support required by pandoc >1.10
+    \usepackage{booktabs}  % table support for pandoc > 1.12.2
+    
+
+    
+    
+    \definecolor{orange}{cmyk}{0,0.4,0.8,0.2}
+    \definecolor{darkorange}{rgb}{.71,0.21,0.01}
+    \definecolor{darkgreen}{rgb}{.12,.54,.11}
+    \definecolor{myteal}{rgb}{.26, .44, .56}
+    \definecolor{gray}{gray}{0.45}
+    \definecolor{lightgray}{gray}{.95}
+    \definecolor{mediumgray}{gray}{.8}
+    \definecolor{inputbackground}{rgb}{.95, .95, .85}
+    \definecolor{outputbackground}{rgb}{.95, .95, .95}
+    \definecolor{traceback}{rgb}{1, .95, .95}
+    % ansi colors
+    \definecolor{red}{rgb}{.6,0,0}
+    \definecolor{green}{rgb}{0,.65,0}
+    \definecolor{brown}{rgb}{0.6,0.6,0}
+    \definecolor{blue}{rgb}{0,.145,.698}
+    \definecolor{purple}{rgb}{.698,.145,.698}
+    \definecolor{cyan}{rgb}{0,.698,.698}
+    \definecolor{lightgray}{gray}{0.5}
+    
+    % bright ansi colors
+    \definecolor{darkgray}{gray}{0.25}
+    \definecolor{lightred}{rgb}{1.0,0.39,0.28}
+    \definecolor{lightgreen}{rgb}{0.48,0.99,0.0}
+    \definecolor{lightblue}{rgb}{0.53,0.81,0.92}
+    \definecolor{lightpurple}{rgb}{0.87,0.63,0.87}
+    \definecolor{lightcyan}{rgb}{0.5,1.0,0.83}
+    
+    % commands and environments needed by pandoc snippets
+    % extracted from the output of `pandoc -s`
+    \DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+    % Add ',fontsize=\small' for more characters per line
+    \newenvironment{Shaded}{}{}
+    \newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{{#1}}}}
+    \newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{{#1}}}
+    \newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{{#1}}}
+    \newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{{#1}}}
+    \newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{{#1}}}}
+    \newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{{#1}}}
+    \newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{{#1}}}
+    \newcommand{\RegionMarkerTok}[1]{{#1}}
+    \newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{{#1}}}}
+    \newcommand{\NormalTok}[1]{{#1}}
+    
+    % Define a nice break command that doesn't care if a line doesn't already
+    % exist.
+    \def\br{\hspace*{\fill} \\* }
+    % Math Jax compatability definitions
+    \def\gt{>}
+    \def\lt{<}
+    % Document parameters
+    \title{Course\_Project}
+    
+    
+    
+
+    % Pygments definitions
+    
+\makeatletter
+\def\PY@reset{\let\PY@it=\relax \let\PY@bf=\relax%
+    \let\PY@ul=\relax \let\PY@tc=\relax%
+    \let\PY@bc=\relax \let\PY@ff=\relax}
+\def\PY@tok#1{\csname PY@tok@#1\endcsname}
+\def\PY@toks#1+{\ifx\relax#1\empty\else%
+    \PY@tok{#1}\expandafter\PY@toks\fi}
+\def\PY@do#1{\PY@bc{\PY@tc{\PY@ul{%
+    \PY@it{\PY@bf{\PY@ff{#1}}}}}}}
+\def\PY#1#2{\PY@reset\PY@toks#1+\relax+\PY@do{#2}}
+
+\expandafter\def\csname PY@tok@ge\endcsname{\let\PY@it=\textit}
+\expandafter\def\csname PY@tok@si\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@sr\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.53}{##1}}}
+\expandafter\def\csname PY@tok@c\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@nb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@w\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.73,0.73}{##1}}}
+\expandafter\def\csname PY@tok@mi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gs\endcsname{\let\PY@bf=\textbf}
+\expandafter\def\csname PY@tok@gt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.27,0.87}{##1}}}
+\expandafter\def\csname PY@tok@kn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@err\endcsname{\def\PY@bc##1{\setlength{\fboxsep}{0pt}\fcolorbox[rgb]{1.00,0.00,0.00}{1,1,1}{\strut ##1}}}
+\expandafter\def\csname PY@tok@ne\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.82,0.25,0.23}{##1}}}
+\expandafter\def\csname PY@tok@k\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@cm\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@m\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@cp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.74,0.48,0.00}{##1}}}
+\expandafter\def\csname PY@tok@vg\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@mo\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@mh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@na\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.49,0.56,0.16}{##1}}}
+\expandafter\def\csname PY@tok@s2\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@cpf\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@kc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@kp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@gr\endcsname{\def\PY@tc##1{\textcolor[rgb]{1.00,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@il\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gh\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ch\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@vc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@vi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@no\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@kt\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.69,0.00,0.25}{##1}}}
+\expandafter\def\csname PY@tok@mb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@o\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gp\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@sc\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@s\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@c1\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@nc\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@nt\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@s1\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sh\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@sd\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@se\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.73,0.40,0.13}{##1}}}
+\expandafter\def\csname PY@tok@gu\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.50,0.00,0.50}{##1}}}
+\expandafter\def\csname PY@tok@nl\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nn\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@gi\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.63,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.00,1.00}{##1}}}
+\expandafter\def\csname PY@tok@mf\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.40,0.40,0.40}{##1}}}
+\expandafter\def\csname PY@tok@gd\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.63,0.00,0.00}{##1}}}
+\expandafter\def\csname PY@tok@sx\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@nv\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@kr\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@ni\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.60,0.60,0.60}{##1}}}
+\expandafter\def\csname PY@tok@sb\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.73,0.13,0.13}{##1}}}
+\expandafter\def\csname PY@tok@ow\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.67,0.13,1.00}{##1}}}
+\expandafter\def\csname PY@tok@cs\endcsname{\let\PY@it=\textit\def\PY@tc##1{\textcolor[rgb]{0.25,0.50,0.50}{##1}}}
+\expandafter\def\csname PY@tok@ss\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.10,0.09,0.49}{##1}}}
+\expandafter\def\csname PY@tok@kd\endcsname{\let\PY@bf=\textbf\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+\expandafter\def\csname PY@tok@go\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.53,0.53,0.53}{##1}}}
+\expandafter\def\csname PY@tok@bp\endcsname{\def\PY@tc##1{\textcolor[rgb]{0.00,0.50,0.00}{##1}}}
+
+\def\PYZbs{\char`\\}
+\def\PYZus{\char`\_}
+\def\PYZob{\char`\{}
+\def\PYZcb{\char`\}}
+\def\PYZca{\char`\^}
+\def\PYZam{\char`\&}
+\def\PYZlt{\char`\<}
+\def\PYZgt{\char`\>}
+\def\PYZsh{\char`\#}
+\def\PYZpc{\char`\%}
+\def\PYZdl{\char`\$}
+\def\PYZhy{\char`\-}
+\def\PYZsq{\char`\'}
+\def\PYZdq{\char`\"}
+\def\PYZti{\char`\~}
+% for compatibility with earlier versions
+\def\PYZat{@}
+\def\PYZlb{[}
+\def\PYZrb{]}
+\makeatother
+
+
+    % Exact colors from NB
+    \definecolor{incolor}{rgb}{0.0, 0.0, 0.5}
+    \definecolor{outcolor}{rgb}{0.545, 0.0, 0.0}
+
+
+
+    
+    % Prevent overflowing lines due to hard-to-break entities
+    \sloppy 
+    % Setup hyperref package
+    \hypersetup{
+      breaklinks=true,  % so long urls are correctly broken across lines
+      colorlinks=true,
+      urlcolor=blue,
+      linkcolor=darkorange,
+      citecolor=darkgreen,
+      }
+    % Slightly bigger margins than the latex defaults
+    
+    \geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+    
+    
+
+    \begin{document}
+    
+    
+    \maketitle
+    
+    
+
+    
+    \section{Quality Prediction for Weight Lifting
+Exercises}\label{quality-prediction-for-weight-lifting-exercises}
+
+\subsection{Background}\label{background}
+
+Using devices such as Jawbone Up, Nike FuelBand, and Fitbit it is now
+possible to collect a large amount of data about personal activity
+relatively inexpensively. These type of devices are part of the
+quantified self movement -- a group of enthusiasts who take measurements
+about themselves regularly to improve their health, to find patterns in
+their behavior, or because they are tech geeks. One thing that people
+regularly do is quantify how much of a particular activity they do, but
+they rarely quantify how well they do it. In this project, your goal
+will be to use data from accelerometers on the belt, forearm, arm, and
+dumbell of 6 participants. They were asked to perform barbell lifts
+correctly and incorrectly in 5 different ways. More information is
+available from the website here:
+{[}link{]}http://groupware.les.inf.puc-rio.br/har (see the section on
+the Weight Lifting Exercise Dataset).
+
+\subsection{DATA}\label{data}
+
+The training data for this project are available here:
+
+https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv
+
+The test data are available here:
+
+https://d396qusza40orc.cloudfront.net/predmachlearn/pml-testing.csv
+
+The data for this project come from this source:
+http://groupware.les.inf.puc-rio.br/har.
+
+\subsubsection{I would like to thank from my side for their generous
+contribution in allowing this data to be used for the
+assignment.}\label{i-would-like-to-thank-from-my-side-for-their-generous-contribution-in-allowing-this-data-to-be-used-for-the-assignment.}
+
+    \subsection{GOAL}\label{goal}
+
+The goal of my project is to predict the manner in which they did the
+exercise. This is the ``classe'' variable in the training set. \#\#
+STEPS I FOLLOWED \ldots{} 1. Downloaded the above file and placed in
+pwd(present working directory).This also could be done as
+download.file(url,destfile=`./filename')
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}3}]:} \PY{c+c1}{\PYZsh{}loading files replacing blanks with NA}
+        \PY{n}{training}\PY{o}{=}\PY{n}{read}\PY{o}{.}\PY{n}{csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{pml\PYZhy{}training.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{na}\PY{o}{.}\PY{n}{strings}\PY{o}{=}\PY{n}{c}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{NA}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{NULL}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+        \PY{n}{testing}\PY{o}{=}\PY{n}{read}\PY{o}{.}\PY{n}{csv}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{pml\PYZhy{}testing.csv}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{na}\PY{o}{.}\PY{n}{strings}\PY{o}{=}\PY{n}{c}\PY{p}{(}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{NA}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{NULL}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}4}]:} \PY{n}{dim}\PY{p}{(}\PY{n}{training}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{enumerate*}
+\item 19622
+\item 160
+\end{enumerate*}
+
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}5}]:} \PY{n}{head}\PY{p}{(}\PY{n}{training}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{tabular}{r|llllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll}
+ X & user\_name & raw\_timestamp\_part\_1 & raw\_timestamp\_part\_2 & cvtd\_timestamp & new\_window & num\_window & roll\_belt & pitch\_belt & yaw\_belt & ⋯ & gyros\_forearm\_x & gyros\_forearm\_y & gyros\_forearm\_z & accel\_forearm\_x & accel\_forearm\_y & accel\_forearm\_z & magnet\_forearm\_x & magnet\_forearm\_y & magnet\_forearm\_z & classe\\
+\hline
+	 1                & carlitos         & 1323084231       & 788290           & 05/12/2011 11:23 & no               & 11               & 1.41             & 8.07             & -94.4            & ⋯                & 0.03             &  0.00            & -0.02            & 192              & 203              & -215             & -17              & 654              & 476              & A               \\
+	 2                & carlitos         & 1323084231       & 808298           & 05/12/2011 11:23 & no               & 11               & 1.41             & 8.07             & -94.4            & ⋯                & 0.02             &  0.00            & -0.02            & 192              & 203              & -216             & -18              & 661              & 473              & A               \\
+	 3                & carlitos         & 1323084231       & 820366           & 05/12/2011 11:23 & no               & 11               & 1.42             & 8.07             & -94.4            & ⋯                & 0.03             & -0.02            &  0.00            & 196              & 204              & -213             & -18              & 658              & 469              & A               \\
+	 4                & carlitos         & 1323084232       & 120339           & 05/12/2011 11:23 & no               & 12               & 1.48             & 8.05             & -94.4            & ⋯                & 0.02             & -0.02            &  0.00            & 189              & 206              & -214             & -16              & 658              & 469              & A               \\
+	 5                & carlitos         & 1323084232       & 196328           & 05/12/2011 11:23 & no               & 12               & 1.48             & 8.07             & -94.4            & ⋯                & 0.02             &  0.00            & -0.02            & 189              & 206              & -214             & -17              & 655              & 473              & A               \\
+	 6                & carlitos         & 1323084232       & 304277           & 05/12/2011 11:23 & no               & 12               & 1.45             & 8.06             & -94.4            & ⋯                & 0.02             & -0.02            & -0.03            & 193              & 203              & -215             &  -9              & 660              & 478              & A               \\
+\end{tabular}
+
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}7}]:} \PY{n}{colnames}\PY{p}{(}\PY{n}{training}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{enumerate*}
+\item 'X'
+\item 'user\_name'
+\item 'raw\_timestamp\_part\_1'
+\item 'raw\_timestamp\_part\_2'
+\item 'cvtd\_timestamp'
+\item 'new\_window'
+\item 'num\_window'
+\item 'roll\_belt'
+\item 'pitch\_belt'
+\item 'yaw\_belt'
+\item 'total\_accel\_belt'
+\item 'kurtosis\_roll\_belt'
+\item 'kurtosis\_picth\_belt'
+\item 'kurtosis\_yaw\_belt'
+\item 'skewness\_roll\_belt'
+\item 'skewness\_roll\_belt.1'
+\item 'skewness\_yaw\_belt'
+\item 'max\_roll\_belt'
+\item 'max\_picth\_belt'
+\item 'max\_yaw\_belt'
+\item 'min\_roll\_belt'
+\item 'min\_pitch\_belt'
+\item 'min\_yaw\_belt'
+\item 'amplitude\_roll\_belt'
+\item 'amplitude\_pitch\_belt'
+\item 'amplitude\_yaw\_belt'
+\item 'var\_total\_accel\_belt'
+\item 'avg\_roll\_belt'
+\item 'stddev\_roll\_belt'
+\item 'var\_roll\_belt'
+\item 'avg\_pitch\_belt'
+\item 'stddev\_pitch\_belt'
+\item 'var\_pitch\_belt'
+\item 'avg\_yaw\_belt'
+\item 'stddev\_yaw\_belt'
+\item 'var\_yaw\_belt'
+\item 'gyros\_belt\_x'
+\item 'gyros\_belt\_y'
+\item 'gyros\_belt\_z'
+\item 'accel\_belt\_x'
+\item 'accel\_belt\_y'
+\item 'accel\_belt\_z'
+\item 'magnet\_belt\_x'
+\item 'magnet\_belt\_y'
+\item 'magnet\_belt\_z'
+\item 'roll\_arm'
+\item 'pitch\_arm'
+\item 'yaw\_arm'
+\item 'total\_accel\_arm'
+\item 'var\_accel\_arm'
+\item 'avg\_roll\_arm'
+\item 'stddev\_roll\_arm'
+\item 'var\_roll\_arm'
+\item 'avg\_pitch\_arm'
+\item 'stddev\_pitch\_arm'
+\item 'var\_pitch\_arm'
+\item 'avg\_yaw\_arm'
+\item 'stddev\_yaw\_arm'
+\item 'var\_yaw\_arm'
+\item 'gyros\_arm\_x'
+\item 'gyros\_arm\_y'
+\item 'gyros\_arm\_z'
+\item 'accel\_arm\_x'
+\item 'accel\_arm\_y'
+\item 'accel\_arm\_z'
+\item 'magnet\_arm\_x'
+\item 'magnet\_arm\_y'
+\item 'magnet\_arm\_z'
+\item 'kurtosis\_roll\_arm'
+\item 'kurtosis\_picth\_arm'
+\item 'kurtosis\_yaw\_arm'
+\item 'skewness\_roll\_arm'
+\item 'skewness\_pitch\_arm'
+\item 'skewness\_yaw\_arm'
+\item 'max\_roll\_arm'
+\item 'max\_picth\_arm'
+\item 'max\_yaw\_arm'
+\item 'min\_roll\_arm'
+\item 'min\_pitch\_arm'
+\item 'min\_yaw\_arm'
+\item 'amplitude\_roll\_arm'
+\item 'amplitude\_pitch\_arm'
+\item 'amplitude\_yaw\_arm'
+\item 'roll\_dumbbell'
+\item 'pitch\_dumbbell'
+\item 'yaw\_dumbbell'
+\item 'kurtosis\_roll\_dumbbell'
+\item 'kurtosis\_picth\_dumbbell'
+\item 'kurtosis\_yaw\_dumbbell'
+\item 'skewness\_roll\_dumbbell'
+\item 'skewness\_pitch\_dumbbell'
+\item 'skewness\_yaw\_dumbbell'
+\item 'max\_roll\_dumbbell'
+\item 'max\_picth\_dumbbell'
+\item 'max\_yaw\_dumbbell'
+\item 'min\_roll\_dumbbell'
+\item 'min\_pitch\_dumbbell'
+\item 'min\_yaw\_dumbbell'
+\item 'amplitude\_roll\_dumbbell'
+\item 'amplitude\_pitch\_dumbbell'
+\item 'amplitude\_yaw\_dumbbell'
+\item 'total\_accel\_dumbbell'
+\item 'var\_accel\_dumbbell'
+\item 'avg\_roll\_dumbbell'
+\item 'stddev\_roll\_dumbbell'
+\item 'var\_roll\_dumbbell'
+\item 'avg\_pitch\_dumbbell'
+\item 'stddev\_pitch\_dumbbell'
+\item 'var\_pitch\_dumbbell'
+\item 'avg\_yaw\_dumbbell'
+\item 'stddev\_yaw\_dumbbell'
+\item 'var\_yaw\_dumbbell'
+\item 'gyros\_dumbbell\_x'
+\item 'gyros\_dumbbell\_y'
+\item 'gyros\_dumbbell\_z'
+\item 'accel\_dumbbell\_x'
+\item 'accel\_dumbbell\_y'
+\item 'accel\_dumbbell\_z'
+\item 'magnet\_dumbbell\_x'
+\item 'magnet\_dumbbell\_y'
+\item 'magnet\_dumbbell\_z'
+\item 'roll\_forearm'
+\item 'pitch\_forearm'
+\item 'yaw\_forearm'
+\item 'kurtosis\_roll\_forearm'
+\item 'kurtosis\_picth\_forearm'
+\item 'kurtosis\_yaw\_forearm'
+\item 'skewness\_roll\_forearm'
+\item 'skewness\_pitch\_forearm'
+\item 'skewness\_yaw\_forearm'
+\item 'max\_roll\_forearm'
+\item 'max\_picth\_forearm'
+\item 'max\_yaw\_forearm'
+\item 'min\_roll\_forearm'
+\item 'min\_pitch\_forearm'
+\item 'min\_yaw\_forearm'
+\item 'amplitude\_roll\_forearm'
+\item 'amplitude\_pitch\_forearm'
+\item 'amplitude\_yaw\_forearm'
+\item 'total\_accel\_forearm'
+\item 'var\_accel\_forearm'
+\item 'avg\_roll\_forearm'
+\item 'stddev\_roll\_forearm'
+\item 'var\_roll\_forearm'
+\item 'avg\_pitch\_forearm'
+\item 'stddev\_pitch\_forearm'
+\item 'var\_pitch\_forearm'
+\item 'avg\_yaw\_forearm'
+\item 'stddev\_yaw\_forearm'
+\item 'var\_yaw\_forearm'
+\item 'gyros\_forearm\_x'
+\item 'gyros\_forearm\_y'
+\item 'gyros\_forearm\_z'
+\item 'accel\_forearm\_x'
+\item 'accel\_forearm\_y'
+\item 'accel\_forearm\_z'
+\item 'magnet\_forearm\_x'
+\item 'magnet\_forearm\_y'
+\item 'magnet\_forearm\_z'
+\item 'classe'
+\end{enumerate*}
+
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}8}]:} \PY{c+c1}{\PYZsh{}I believe that number of variables here is too large ie 160 and so I decided to remove irrevelant columns the first seven}
+        \PY{n}{training\PYZus{}1}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n}{training}\PY{p}{[}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{n}{c}\PY{p}{(}\PY{l+m+mi}{1}\PY{p}{:}\PY{l+m+mi}{7}\PY{p}{)}\PY{p}{]}
+        \PY{n}{dim}\PY{p}{(}\PY{n}{training\PYZus{}1}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{enumerate*}
+\item 19622
+\item 153
+\end{enumerate*}
+
+
+    
+    No of rows 19622 is large and I want to shorten training data and also
+use the rest for cross validation. Our main motive is predicting the
+classe variable but still we have 153 columns which is too much.Next I
+am gonna remove the columns with most NA's and also I am gonna separate
+training and cross validation data.
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}11}]:} \PY{n}{training\PYZus{}2}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}} \PY{n}{training\PYZus{}1}\PY{p}{[}\PY{p}{,}\PY{n}{colSums}\PY{p}{(}\PY{o+ow}{is}\PY{o}{.}\PY{n}{na}\PY{p}{(}\PY{n}{training\PYZus{}1}\PY{p}{)}\PY{p}{)}\PY{o}{\PYZlt{}}\PY{o}{=}\PY{l+m+mi}{5000}\PY{p}{]}
+         \PY{n}{dim}\PY{p}{(}\PY{n}{training\PYZus{}2}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{enumerate*}
+\item 19622
+\item 53
+\end{enumerate*}
+
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}14}]:} \PY{c+c1}{\PYZsh{}split training and cross validation }
+         \PY{n}{library}\PY{p}{(}\PY{n}{caret}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}16}]:} \PY{c+c1}{\PYZsh{}as per course standard general convention for splitting}
+         \PY{n}{inTrain}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n}{createDataPartition}\PY{p}{(}\PY{n}{training\PYZus{}2}\PY{err}{\PYZdl{}}\PY{n}{classe}\PY{p}{,}\PY{n}{p}\PY{o}{=}\PY{l+m+mf}{0.75}\PY{p}{,}\PY{n+nb}{list}\PY{o}{=}\PY{n}{FALSE}\PY{p}{)}
+         \PY{n}{train}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n}{training\PYZus{}2}\PY{p}{[}\PY{n}{inTrain}\PY{p}{,}\PY{p}{]}
+         \PY{n}{test}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n}{training\PYZus{}2}\PY{p}{[}\PY{o}{\PYZhy{}}\PY{n}{inTrain}\PY{p}{,}\PY{p}{]}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}17}]:} \PY{n}{dim}\PY{p}{(}\PY{n}{train}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{enumerate*}
+\item 14718
+\item 53
+\end{enumerate*}
+
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}19}]:} \PY{c+c1}{\PYZsh{}Now still I am looking for most affecting columns and to see that I am looking for corelation based upon current data}
+         \PY{n}{library}\PY{p}{(}\PY{n}{corrplot}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}44}]:} \PY{n}{corr\PYZus{}Mat}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n}{cor}\PY{p}{(}\PY{n}{train}\PY{p}{[}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{l+m+mi}{53}\PY{p}{]}\PY{p}{,}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{}https://cran.r\PYZhy{}project.org/web/packages/corrplot/vignettes/corrplot\PYZhy{}intro.html}
+         \PY{n}{corrplot}\PY{p}{(}\PY{n}{corr\PYZus{}Mat}\PY{p}{,} \PY{n}{method} \PY{o}{=} \PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{color}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n+nb}{type}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{lower}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{order}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{AOE}\PY{l+s+s2}{\PYZdq{}}\PY{p}{,}\PY{n}{tl}\PY{o}{.}\PY{n}{cex}\PY{o}{=}\PY{l+m+mf}{0.75}\PY{p}{,}\PY{n}{tl}\PY{o}{.}\PY{n}{srt}\PY{o}{=}\PY{l+m+mi}{27}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Course_Project_files/Course_Project_13_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}46}]:} \PY{n}{highCorr}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n}{train}\PY{p}{[}\PY{p}{,}\PY{o}{\PYZhy{}}\PY{n}{findCorrelation}\PY{p}{(}\PY{n}{corr\PYZus{}Mat}\PY{p}{,}\PY{n}{cutoff}\PY{o}{=}\PY{l+m+mf}{0.5}\PY{p}{)}\PY{p}{]}
+         \PY{n}{colnames}\PY{p}{(}\PY{n}{highCorr}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{enumerate*}
+\item 'gyros\_belt\_x'
+\item 'gyros\_belt\_y'
+\item 'gyros\_belt\_z'
+\item 'magnet\_belt\_y'
+\item 'roll\_arm'
+\item 'yaw\_arm'
+\item 'total\_accel\_arm'
+\item 'gyros\_arm\_y'
+\item 'gyros\_arm\_z'
+\item 'magnet\_arm\_z'
+\item 'roll\_dumbbell'
+\item 'pitch\_dumbbell'
+\item 'roll\_forearm'
+\item 'pitch\_forearm'
+\item 'yaw\_forearm'
+\item 'total\_accel\_forearm'
+\item 'gyros\_forearm\_x'
+\item 'gyros\_forearm\_y'
+\item 'accel\_forearm\_z'
+\item 'magnet\_forearm\_x'
+\item 'magnet\_forearm\_y'
+\item 'classe'
+\end{enumerate*}
+
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}47}]:} \PY{n}{dim}\PY{p}{(}\PY{n}{highCorr}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{enumerate*}
+\item 14718
+\item 22
+\end{enumerate*}
+
+
+    
+    \subsection{Finally 22 columns lets hope We're on the
+path}\label{finally-22-columns-lets-hope-were-on-the-path}
+
+\section{Prediction Model}\label{prediction-model}
+
+Here I have to predict among 5 classes: `A',`B',`C',`D',`E' so I think I
+am gonna give a shot to decision tree and for that I am using C4.5
+algorithm(Ranked 1 in top in 2008) using C50 package(extension of C4.5)
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}52}]:} \PY{c+c1}{\PYZsh{}https://cran.r\PYZhy{}project.org/web/packages/C50/C50.pdf}
+         \PY{n}{library}\PY{p}{(}\PY{n}{C50}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}68}]:} \PY{n}{model\PYZus{}1}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n}{C5}\PY{o}{.}\PY{l+m+mi}{0}\PY{p}{(}\PY{n}{classe} \PY{o}{\PYZti{}} \PY{o}{.}\PY{p}{,} \PY{n}{data}\PY{o}{=}\PY{n}{highCorr}\PY{p}{,}\PY{n}{rules}\PY{o}{=}\PY{n}{TRUE}\PY{p}{)}
+         \PY{c+c1}{\PYZsh{}summary(model\PYZus{}1)}
+         \PY{n}{test\PYZus{}model\PYZus{}1}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n}{predict}\PY{o}{.}\PY{n}{C5}\PY{o}{.}\PY{l+m+mi}{0}\PY{p}{(}\PY{n}{model\PYZus{}1}\PY{p}{,}\PY{n}{test}\PY{p}{,}\PY{n+nb}{type}\PY{o}{=}\PY{l+s+s2}{\PYZdq{}}\PY{l+s+s2}{class}\PY{l+s+s2}{\PYZdq{}}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}71}]:} \PY{n}{ans\PYZus{}model\PYZus{}1}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{k}{as}\PY{o}{.}\PY{n}{data}\PY{o}{.}\PY{n}{frame}\PY{p}{(}\PY{n}{test\PYZus{}model\PYZus{}1}\PY{p}{)}
+         \PY{n}{dim}\PY{p}{(}\PY{n}{ans\PYZus{}model\PYZus{}1}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{enumerate*}
+\item 4904
+\item 1
+\end{enumerate*}
+
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}73}]:} \PY{c+c1}{\PYZsh{}lets check our model validity. following matrix code requires e1071}
+         \PY{n}{confusion\PYZus{}Mat}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n}{confusionMatrix}\PY{p}{(}\PY{n}{ans\PYZus{}model\PYZus{}1}\PY{err}{\PYZdl{}}\PY{n}{test\PYZus{}model\PYZus{}1}\PY{p}{,}\PY{n}{test}\PY{err}{\PYZdl{}}\PY{n}{classe}\PY{p}{)}
+         \PY{n}{confusion\PYZus{}Mat}\PY{err}{\PYZdl{}}\PY{n}{table}
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+          Reference
+Prediction    A    B    C    D    E
+         A 1323   31   12    7    8
+         B   29  858   28   15    7
+         C   26   23  784   52   17
+         D   15   27   24  721   21
+         E    2   10    7    9  848
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}76}]:} \PY{n}{accuracy\PYZus{}model\PYZus{}1}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n+nb}{sum}\PY{p}{(}\PY{p}{(}\PY{n}{ans\PYZus{}model\PYZus{}1}\PY{err}{\PYZdl{}}\PY{n}{test\PYZus{}model\PYZus{}1}\PY{o}{==}\PY{n}{test}\PY{err}{\PYZdl{}}\PY{n}{classe}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{n}{dim}\PY{p}{(}\PY{n}{test}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+         \PY{n}{accuracy\PYZus{}model\PYZus{}1}
+\end{Verbatim}
+
+    0.924551386623165
+
+    
+    Thats pretty good but I want better than that so I am searching for
+model to best fit my data but of course no overfitting
+
+    \subsection{Now trying randomForest}\label{now-trying-randomforest}
+
+this is i think quite slow but lets hope it would be fine for me
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}83}]:} \PY{c+c1}{\PYZsh{}classification by randomforest}
+         \PY{n}{library}\PY{p}{(}\PY{n}{randomForest}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+randomForest 4.6-12
+Type rfNews() to see new features/changes/bug fixes.
+
+Attaching package: ‘randomForest’
+
+The following object is masked from ‘package:ggplot2’:
+
+    margin
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}109}]:} \PY{n+nb}{set}\PY{o}{.}\PY{n}{seed}\PY{p}{(}\PY{l+m+mi}{2727}\PY{p}{)}
+          \PY{n}{model\PYZus{}2}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n}{randomForest}\PY{p}{(}\PY{n}{classe}\PY{o}{\PYZti{}}\PY{o}{.}\PY{p}{,}\PY{n}{data}\PY{o}{=}\PY{n}{highCorr}\PY{p}{,}\PY{n}{importance}\PY{o}{=}\PY{n}{TRUE}\PY{p}{)}
+          \PY{c+c1}{\PYZsh{}summary(model\PYZus{}2)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}110}]:} \PY{c+c1}{\PYZsh{}short info plot }
+          \PY{n}{varImpPlot}\PY{p}{(}\PY{n}{model\PYZus{}2}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{center}
+    \adjustimage{max size={0.9\linewidth}{0.9\paperheight}}{Course_Project_files/Course_Project_26_0.png}
+    \end{center}
+    { \hspace*{\fill} \\}
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}111}]:} \PY{n}{test\PYZus{}model\PYZus{}2}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n}{predict}\PY{p}{(}\PY{n}{model\PYZus{}2}\PY{p}{,}\PY{n}{test}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}112}]:} \PY{n}{ans\PYZus{}model\PYZus{}2}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{k}{as}\PY{o}{.}\PY{n}{data}\PY{o}{.}\PY{n}{frame}\PY{p}{(}\PY{n}{test\PYZus{}model\PYZus{}2}\PY{p}{)}
+          \PY{n}{dim}\PY{p}{(}\PY{n}{ans\PYZus{}model\PYZus{}2}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{enumerate*}
+\item 4904
+\item 1
+\end{enumerate*}
+
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}107}]:} \PY{c+c1}{\PYZsh{}lets check our model validity. following matrix code requires e1071}
+          \PY{n}{confusion\PYZus{}Mat}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n}{confusionMatrix}\PY{p}{(}\PY{n}{ans\PYZus{}model\PYZus{}2}\PY{err}{\PYZdl{}}\PY{n}{test\PYZus{}model\PYZus{}2}\PY{p}{,}\PY{n}{test}\PY{err}{\PYZdl{}}\PY{n}{classe}\PY{p}{)}
+          \PY{n}{confusion\PYZus{}Mat}\PY{err}{\PYZdl{}}\PY{n}{table}
+\end{Verbatim}
+
+    
+    \begin{verbatim}
+          Reference
+Prediction    A    B    C    D    E
+         A 1388    6    2    1    0
+         B    3  939   10    0    0
+         C    3    2  835   27    1
+         D    1    0    8  775    2
+         E    0    2    0    1  898
+    \end{verbatim}
+
+    
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}113}]:} \PY{n}{accuracy\PYZus{}model\PYZus{}2}\PY{o}{\PYZlt{}}\PY{o}{\PYZhy{}}\PY{n+nb}{sum}\PY{p}{(}\PY{p}{(}\PY{n}{ans\PYZus{}model\PYZus{}2}\PY{err}{\PYZdl{}}\PY{n}{test\PYZus{}model\PYZus{}2}\PY{o}{==}\PY{n}{test}\PY{err}{\PYZdl{}}\PY{n}{classe}\PY{p}{)}\PY{p}{)}\PY{o}{/}\PY{n}{dim}\PY{p}{(}\PY{n}{test}\PY{p}{)}\PY{p}{[}\PY{l+m+mi}{1}\PY{p}{]}
+          \PY{n}{accuracy\PYZus{}model\PYZus{}2}
+\end{Verbatim}
+
+    0.986337683523654
+
+    
+    I think its great accuracy (98.63) so this model is best fiting.However
+still we can tune the random forest parameters so that we can achieve
+very high accuracy
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor}117}]:} \PY{k}{print}\PY{p}{(}\PY{n}{testing\PYZus{}ans\PYZus{}model\PYZus{}2}\PY{p}{)}
+\end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+testing\_model\_2
+1                B
+2                A
+3                B
+4                A
+5                A
+6                E
+7                D
+8                B
+9                A
+10               A
+11               B
+12               C
+13               B
+14               A
+15               E
+16               E
+17               A
+18               B
+19               B
+20               B
+    \end{Verbatim}
+
+    \begin{Verbatim}[commandchars=\\\{\}]
+{\color{incolor}In [{\color{incolor} }]:} 
+\end{Verbatim}
+
+
+    % Add a bibliography block to the postdoc
+    
+    
+    
+    \end{document}
